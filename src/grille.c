@@ -35,6 +35,20 @@ void effacer_partie (partie p){
 		effacer_colonne((p->grille)[i]);
 	free(p);
 }
+
+void deposer_pion ( bool joueur, colonne c) {
+	(c->valeurs)[c->h] = joueur;
+	(c->h)++;
+}
 	
+void jouer_pion (int indice, bool joueur, partie p){
 	
+	coup dernier_coup; 								//Ajout du coup joue dans l'historique le la partie
+	dernier_coup = (coup) malloc (sizeof(str_coup));
+	(dernier_coup -> c) = indice;
+	(dernier_coup -> precedent) = (p -> historique);
+	
+	deposer_pion (joueur, ((p->grille)[indice - 1]));//On depose le pion a la colonne (indice-1) grace a la fonction deposer_pion
+}
+		
 	

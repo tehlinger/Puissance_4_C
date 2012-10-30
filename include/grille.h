@@ -9,7 +9,7 @@
 
 
 
-typedef struct str_coup {  int c ; struct str_coup *suivant ;} str_coup, *coup;
+typedef struct str_coup {  int c ; struct str_coup *precedent ;} str_coup, *coup;
 
 typedef int bool;
 
@@ -37,20 +37,33 @@ partie nouvelle_partie();
  void effacer_partie(partie p);
 
 /**
- * \function : effacer_partie
- * \brief : libere l'espace memoire occupe par la partie à effacer
- * \param p la partie à effacer
+ * \function : effacer_colonne
+ * \brief : libere l'espace memoire occupe par la colonne à effacer
+ * \param c la colonne à effacer
  * \return Rien
  **/
 
 void effacer_colonne(colonne c);
 
 /**
- * \function : effacer_colonne
- * \brief : libere l'espace memoire occupe par la colonne à effacer
- * \param c la colonne à effacer
- * \return Rien
+ * \brief depose le pion de valeur joueur dans la colonne c
+ * \param joueur la valeur du pion (vrai ou faux)
+ * \param c la colonne modifiee
+ * \return rien, procedural
  **/
+
+void deposer_pion(bool joueur, colonne c);
+
+/**
+ * \brief Depose le pion du joueur dans la colonne
+ * \param indice l'indice de la colonne
+ * \param joueur : le joueur qui joue (vrai -> l'utilisateur, faux -> le bot)
+ * \param p la partie a modifier
+ * \return Rien, fonction procedurale
+ * \precondition : 0< indice <= 7
+ **/
+
+void jouer_pion (int indice, bool joueur, partie p);
 
 #endif
 
