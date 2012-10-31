@@ -15,7 +15,7 @@ partie nouvelle_partie(){
 	
 	
 		
-	for (i=0; i<HAUTEUR; i++){
+	for (i=0; i<LARGEUR; i++){
 		
 		(p->grille)[i]=(colonne)malloc(sizeof (str_colonne));
 		((p->grille)[i]->h)=0;
@@ -47,6 +47,7 @@ void jouer_pion (int indice, bool joueur, partie p){
 	dernier_coup = (coup) malloc (sizeof(str_coup));
 	(dernier_coup -> c) = indice;
 	(dernier_coup -> precedent) = (p -> historique);
+	p->historique = dernier_coup;
 	
 	deposer_pion (joueur, ((p->grille)[indice - 1]));//On depose le pion a la colonne (indice-1) grace a la fonction deposer_pion
 }
