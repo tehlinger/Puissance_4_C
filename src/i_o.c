@@ -1,5 +1,6 @@
 #include <i_o.h>
 #include <grille.h>
+#include <verifications.h>
 
 
 void tracer_ligne( int largeur ){
@@ -32,8 +33,11 @@ void afficher_partie (partie p){
 	
 	for (i=HAUTEUR; i>0; i--){
 		remplir_ligne(i, p);
-		tracer_ligne(LARGEUR);
-	}
+		tracer_ligne(LARGEUR);}
+		printf(" ");
+	for (i=1;i<8;i++)
+	printf(" %d  ",i);
 	printf("\n");
 }
 		
+

@@ -1,17 +1,8 @@
 #include <grille.h>
+#include <verifications.h>
 
 
 // typedef struct { colonne grille[LARGEUR] ; coup historique } str_partie, *partie;
-
-
-int contenu_case(int x, int y, partie p){
-	 if((((p->grille) [x-1]) -> h) < y) return -1;//Si la hauteur de la pile n'atteind pas encore la case, renvoie -1
-	 else
-	 {
-		 if ((((p->grille)[x-1])->valeurs[y-1]) == 0) return 0;
-		 else return 1;
-	 }
-	 }
 	 
 partie nouvelle_partie(){
 	
@@ -50,6 +41,20 @@ void deposer_pion ( bool joueur, colonne c) {
 	(c->h)++;
 }
 	
+void retirer_pion(partie p){
+	
+	(((p->grille)[((p->historique)->c)-1]) -> h) --;
+	
+	coup avant_dernier_coup;
+	avant_dernier_coup = (coup) malloc (sizeof(str_coup));
+	avant_dernier_coup = ((p->historique)-> precedent);
+	
+	free(p->historique);
+	
+	(p->historique) = avant_dernier_coup;
+	
+}
+
 void jouer_pion (int indice, bool joueur, partie p){
 	
 	coup dernier_coup; 								//Ajout du coup joue dans l'historique le la partie
@@ -61,4 +66,4 @@ void jouer_pion (int indice, bool joueur, partie p){
 	deposer_pion (joueur, ((p->grille)[indice - 1]));//On depose le pion a la colonne (indice-1) grace a la fonction deposer_pion
 }
 		
-	
+
