@@ -31,3 +31,20 @@ int alignes_verticalement (bool joueur, int indice, partie p){
 	return acc;
 }
 
+int alignes_horizontalement (bool joueur, int indice, partie p){
+	
+	int i;
+	int hauteur_coup = ((((p->grille)[indice-1])->h) + 1); //Hauteur du coup en question
+	int acc_gauche = 0;
+	int acc_droit = 0;
+	
+	for(i = indice - 1; (i > 0) && (contenu_case(i, hauteur_coup, p) == joueur); i--)
+	acc_gauche ++;
+	
+	for ((i=indice + 1); (i <= 7) && (contenu_case(i, hauteur_coup, p) == joueur); i++)
+	acc_droit ++;
+	
+	return (acc_gauche + acc_droit + 1);
+}
+	
+	
