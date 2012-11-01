@@ -65,5 +65,15 @@ void deposer_pion(bool joueur, colonne c);
 
 void jouer_pion (int indice, bool joueur, partie p);
 
+
+/**
+ * \brief Renvoie le contenu de la case dans la colonne x à la hauteur y ou -1 si la case est vide
+ * \param x : la colonne
+ * \param y : la hauteur de la colonne
+ * \param p : la partie en question
+ **/
+ 
+ int contenu_case (int x, int y, partie p);
+	  
 #endif
 

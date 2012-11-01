@@ -16,20 +16,17 @@ void remplir_ligne(int hauteur, partie p){
 	int i;
 	printf("|");
 	
-	for( i =0; i < LARGEUR; i++){
-		if ((((p->grille)[i])->h) < hauteur)
-			printf("   |");
-			
-			else{
-				if ((((p->grille)[i])->valeurs[hauteur]) == 1)
-					printf(" X |");
-					else printf (" O |");
-				}
+	for( i =1; i <= LARGEUR; i++){
+		int case_etudiee = contenu_case (i, hauteur, p);
+		if (case_etudiee == -1) printf("   |");
+		else if (case_etudiee  == 0) printf(" O |");
+		else printf (" X |");
 			}
 		printf("\n");
 	}
 
 void afficher_partie (partie p){
+	printf("\n");
 	int i;
 	tracer_ligne(LARGEUR);
 	

@@ -4,6 +4,15 @@
 // typedef struct { colonne grille[LARGEUR] ; coup historique } str_partie, *partie;
 
 
+int contenu_case(int x, int y, partie p){
+	 if((((p->grille) [x-1]) -> h) < y) return -1;//Si la hauteur de la pile n'atteind pas encore la case, renvoie -1
+	 else
+	 {
+		 if ((((p->grille)[x-1])->valeurs[y-1]) == 0) return 0;
+		 else return 1;
+	 }
+	 }
+	 
 partie nouvelle_partie(){
 	
 	int i;
