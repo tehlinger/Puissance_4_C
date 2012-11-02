@@ -20,8 +20,9 @@ int main ()
 	
 	
 	afficher_partie(p);
-	int acc_test = alignes_horizontalement(1,4,p);
+	int acc_test = alignes_diag_droite(1,4,p);
 	printf("\n%d", acc_test);
+	effacer_grille();
 	free(p);
 
 	return 1;

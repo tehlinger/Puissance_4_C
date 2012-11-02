@@ -41,3 +41,6 @@ void afficher_partie (partie p){
 }
 		
 
+void effacer_grille(){
+	 printf("\n\e[%dA",19);
+ }
