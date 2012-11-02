@@ -70,6 +70,7 @@ int alignes_diag_gauche (bool joueur, int indice, partie p) {
 }
 
 int alignes_diag_droite(bool joueur, int indice, partie p){
+	
 	int i;
 	int hauteur_coup = ((((p->grille)[indice-1])->h) + 1); //Hauteur du coup en question
 	int acc_gauche = 0;
@@ -90,3 +91,10 @@ int alignes_diag_droite(bool joueur, int indice, partie p){
 	return (acc_gauche + acc_droit + 1);
 	
 }
+
+bool coup_gagnant(int indice, bool joueur, partie p){
+	return ((alignes_diag_droite(joueur, indice, p) >= 4) ||
+			(alignes_diag_gauche(joueur, indice, p) >= 4) ||
+			(alignes_horizontalement(joueur, indice, p) >= 4) ||
+			(alignes_verticalement(joueur, indice, p) >= 4)) ;
+		}

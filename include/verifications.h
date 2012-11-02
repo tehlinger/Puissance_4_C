@@ -49,13 +49,13 @@ int alignes_diag_gauche(bool joueur, int indice, partie p);
  * Préconditions : 0 < indice <= LARGEUR
  **/
  
-int alignes_diag_doite (bool joueur, int indice, partie p);
+int alignes_diag_droite (bool joueur, int indice, partie p);
 /**Renvoie le nombre de pions alignés diagonalement NE/SO incluant le dernier pion posé sur la colonne
  * Paramètres : L'indice de la colonne, la partie p,  bool le joueur questionné
  * Préconditions : 0 < indice <= LARGEUR
  **/
  
+ bool coup_gagnant(int indice,bool joueur, partie p);
+/** Fonction calculant si un coup est gagnant**/
 
-
- 
 #endif

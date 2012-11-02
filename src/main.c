@@ -6,24 +6,19 @@
 #include <aleatoire.h>
 #include <time.h>
 int main ()
-{
-	srand(time(NULL));					
-	
+{	
+	bool personne_ne_gagne, joueur = 1;
 	partie p;
-	p=nouvelle_partie();
-	int i;
-	for(i=0;i<20;i++){
-		int  rand_colonne = (alea(6))+1;
-		int rand_joueur = (alea(1));
-		jouer_pion(rand_colonne,rand_joueur,p);
-	}
+	int coup_joue;
+	p = nouvelle_partie();
 	
-	
-	afficher_partie(p);
-	int acc_test = alignes_diag_droite(1,4,p);
-	printf("\n%d", acc_test);
-	effacer_grille();
-	free(p);
-
+	do {
+		coup_joue = demander_coup_joueur(p, joueur);
+		personne_ne_gagne = !(coup_gagnant(coup_joue, joueur, p)); 
+		jouer_pion(coup_joue, joueur, p);
+		afficher_partie(p);
+	} while(personne_ne_gagne);
+	effacer_grille(p);
+printf("BRAVO!");
 	return 1;
 }

@@ -23,6 +23,18 @@ void afficher_partie (partie p);
   **/
   void remplir_ligne(int hauteur, partie p);
   
-  #endif
+  /**
+   * \brief : efface la grille
+   **/
+   
+   void effacer_grille();
+   
+   /** Fonction demandant à l'utilisateur le coup qu'il veut jouer, renvoie 1 s'il gagne, 0 sinon.
+    *  Préconditions : la partie existe
+    **/
+   bool demander_coup_joueur(partie p, bool joueur);
+   
+   
+    #endif
  
  

@@ -1,7 +1,7 @@
 #include <i_o.h>
 #include <grille.h>
 #include <verifications.h>
-
+#define NB_LIGNES_A_EFFACER 17
 
 void tracer_ligne( int largeur ){
 	int i;
@@ -42,5 +42,24 @@ void afficher_partie (partie p){
 		
 
 void effacer_grille(){
-	 printf("\n\e[%dA",19);
+	 printf("\n\e[%dA",NB_LIGNES_A_EFFACER);
  }
+
+bool demander_coup_joueur(partie p, bool joueur){
+	bool coup_valide = -1;
+	int indice = 0;
+	printf("Rentrez l'indice de la colonne où jouer(entre 1 et 7, inclus):\n");//On lutte avec l'utilisateur pour qu'il rentre un indice de colonne correct
+	do{
+		scanf("%d", &indice);	
+		coup_valide = ((indice>0)&&(indice<8));
+	}while(!(coup_valide));
+	
+	return indice;
+	}
+	
+	
+	
+	
+	
+	
+	
