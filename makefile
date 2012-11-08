@@ -9,10 +9,11 @@ vpath %.o obj/
 vpath main bin/
 
 
-main : main.o grille.o i_o.o verifications.o aleatoire.o
-	gcc $(CFLAGS) -o main  $(OPATH)grille.o $(OPATH)main.o $(OPATH)i_o.o $(OPATH)verifications.o $(OPATH)aleatoire.o
+main : main.o grille.o i_o.o verifications.o aleatoire.o i_a.o
+	gcc $(CFLAGS) -o main  $(OPATH)grille.o $(OPATH)main.o $(OPATH)i_o.o $(OPATH)verifications.o $(OPATH)aleatoire.o $(OPATH)i_a.o
 	mv $@ bin/
 
+i_a.o : i_a.c i_a.h verifications.h
 aleatoire.o : aleatoire.c aleatoire.h
 verifications.o : verifications.c verifications.h	
 grille.o : grille.c grille.h

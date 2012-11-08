@@ -27,8 +27,15 @@ partie nouvelle_partie(){
 void effacer_colonne (colonne c){
 	free (c);
 }
-
-void effacer_partie (partie p){
+void liberer_historique(coup historique){
+	
+	coup tmp = (coup)malloc(sizeof(str_coup));
+	
+		tmp = historique -> suivant; 
+		while (historique != NULL)
+		
+	
+void liberer_partie (partie p){
 	
 	int i;
 	for (i = 0; i<LARGEUR;i++)

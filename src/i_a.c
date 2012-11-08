@@ -1,35 +1,74 @@
-#include i_a.h
+#include <i_a.h>
+
+int nb_egalites(float tab[], int longueur, float maximum){
+	int i;
+	int acc = 0;
+	for (i=0; i<longueur; i++)
+		if (tab[i] == maximum)
+			acc ++;
+	return acc;
+}
 
 int max(float tab[], int longueur){
 	int acc, i;
-	acc = tab[0];
+	acc = 0;
 	for (i = 1; i < longueur; i++){
-		if (tab[i] > acc)
-		acc = tab[i];
+		if (tab[i] > tab[acc])
+		acc = i;
 	}
 	return acc;
 }
-int nb_alignements( int longueur, bool joueur){
+
+int nb_alignements( int longueur, bool joueur, int indice, partie p){
 	int acc = 0;
-	if (alignes_diag_droite(joueur, i, p) == longueur) acc++;
-	else if	(alignes_diag_gauche(joueur, i, p) == longueur) acc++;
-	else if	(alignes_horizontalement(joueur, i, p) == longueur) acc++;
-	else if	(alignes_horizontalement(joueur, i, p) == longueur) acc++;
+	if (coup_gagnant(indice, joueur, p)) return 1;
+	if (alignes_diag_droite(joueur, indice, p) == longueur) acc++; 
+	else if	(alignes_diag_gauche(joueur, indice, p) == longueur) acc++;
+	else if	(alignes_horizontalement(joueur, indice, p) == longueur) acc++;
+	else if	(alignes_horizontalement(joueur, indice, p) == longueur) acc++;
 	return acc;
 	}
-		
+
 float score(int indice, partie p, bool joueur){
-	bool joueur_adversaire = (joueur + 1) % 2;
-	if ((alignes_diag_droite(joueur, i, p) == 4) ||
-		(alignes_diag_gauche(joueur, i, p) == 4) ||
-		(alignes_horizontalement(joueur, i, p) == 4) ||
-		(alignes_horizontalement(joueur, i, p) == 4))
-		return 1.0;
-	else if ((alignes_diag_droite(joueur_adversaire, i, p) == 4) ||
-		(alignes_diag_gauche(joueur_adversaire, i, p) == 4) ||
-		(alignes_horizontalement(joueur_adversaire, i, p) == 4) ||
-		(alignes_horizontalement(joueur_adversaire, i, p) == 4))
-		return 0.9;
 	
+	int acc = 0;
+	bool joueur_adversaire = (joueur + 1) % 2;
+	
+		if (nb_alignements( 4, joueur,indice,p))
+		return 1.0;//Cas LE PLUS simple : coup gagnant :  on renvoie 1.
+			else{
+				
+				if (coup_gagnant(indice, joueur_adversaire, p)) return 0.99; //Deuxième cas simple : empêcher l'autre de gagner
+				
+				//Cas cumulables :
+				
+				else{
+					acc += nb_alignements(2, joueur, indice, p);
+					acc += nb_alignements(2, joueur_adversaire, indice, p);//On cumule les paires possibles et celles que l'on detruit chez l'autre
+					if (nb_alignements(3, joueur_adversaire, indice, p) == 1)
+					acc += 8;
+						else if (nb_alignements(3, joueur_adversaire, indice, p) > 1) 
+							acc += (nb_alignements(3, joueur_adversaire, indice, p))*16;
+					if (nb_alignements(3, joueur, indice, p) == 1)
+					acc += 15;
+					else if (nb_alignements(3, joueur, indice, p) > 1)
+						acc += (nb_alignements(3, joueur, indice, p))*33;
+					}
+				}
+		return ((float)acc / 190.0);
+	}
+					
+float* tab_scores(partie p, bool joueur){
+	
+	float *scores = (float*) malloc(LARGEUR * sizeof(float));
+	
+	int i;
+	
+	for(i=1; i<=LARGEUR; i++)
+		scores[i] = score(i, p,joueur);
+	
+	return scores;
+}
+
 	
 	

@@ -34,7 +34,10 @@ partie nouvelle_partie();
  * \return Rien
  **/
  
- void effacer_partie(partie p);
+ void liberer_partie(partie p);
+ 
+ /** Libère la mémoire allouée pour la partie p *//
+ void liberer_historique(partie p);
 
 /**
  * \function : effacer_colonne

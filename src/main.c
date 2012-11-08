@@ -18,7 +18,7 @@ int main ()
 		jouer_pion(coup_joue, joueur, p);
 		afficher_partie(p);
 	} while(personne_ne_gagne);
-	effacer_grille(p);
-printf("BRAVO!");
+printf("\nBRAVO!\n");
+liberer_partie(p);
 	return 1;
 }
