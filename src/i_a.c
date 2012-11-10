@@ -31,7 +31,7 @@ int nb_alignements( int longueur, bool joueur, int indice, partie p){
 
 float score(int indice, partie p, bool joueur){
 	
-	int acc = 0;
+	float acc = 0;
 	bool joueur_adversaire = (joueur + 1) % 2;
 	
 		if (nb_alignements( 4, joueur,indice,p))
@@ -44,7 +44,7 @@ float score(int indice, partie p, bool joueur){
 				
 				else{
 					acc += nb_alignements(2, joueur, indice, p);
-					acc += nb_alignements(2, joueur_adversaire, indice, p);//On cumule les paires possibles et celles que l'on detruit chez l'autre
+					acc += (nb_alignements(2, joueur_adversaire, indice, p)*0.5);//On cumule les paires possibles et celles que l'on detruit chez l'autre
 					if (nb_alignements(3, joueur_adversaire, indice, p) == 1)
 					acc += 8;
 						else if (nb_alignements(3, joueur_adversaire, indice, p) > 1) 
@@ -55,7 +55,7 @@ float score(int indice, partie p, bool joueur){
 						acc += (nb_alignements(3, joueur, indice, p))*33;
 					}
 				}
-		return ((float)acc / 190.0);
+		return (acc / 190.0);
 	}
 					
 void tab_scores(partie p, bool joueur, float tab[LARGEUR]){

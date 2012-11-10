@@ -7,6 +7,7 @@ void lancer_partie(partie p, bool IA){
 	int personne_ne_gagne = 1;
 	int qui_a_gagne;
 	int ia_joue = 0;
+	afficher_partie(p);
 	
 	while(personne_ne_gagne){
 		
@@ -15,14 +16,14 @@ void lancer_partie(partie p, bool IA){
 		if(ia_joue) coup_joue = choix_colonne_IA(p, IA);
 		else coup_joue = demander_coup_joueur();
 			
-			if (coup_gagnant(coup_joue, a_qui_le_tour, p))
+			if (coup_gagnant(coup_joue, ia_joue, p))
 			{
 				personne_ne_gagne = 0; //Si la partie se termine, on note le gagnant, on interrompt la boucle
 				qui_a_gagne = a_qui_le_tour;
 			}
-
-		a_qui_le_tour = (a_qui_le_tour + 1) % 2;			
+		
 		jouer_pion(coup_joue, a_qui_le_tour, p);
+		a_qui_le_tour = (a_qui_le_tour + 1) % 2;			
 		afficher_partie(p);
 		
 		
