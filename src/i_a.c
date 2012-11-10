@@ -58,17 +58,18 @@ float score(int indice, partie p, bool joueur){
 		return ((float)acc / 190.0);
 	}
 					
-float* tab_scores(partie p, bool joueur){
-	
-	float *scores = (float*) malloc(LARGEUR * sizeof(float));
+void tab_scores(partie p, bool joueur, float tab[LARGEUR]){
 	
 	int i;
 	
 	for(i=1; i<=LARGEUR; i++)
-		scores[i] = score(i, p,joueur);
-	
-	return scores;
-}
+		tab[i] = score(i, p,joueur);
+	}
 
+int choix_colonne_IA ( partie p, bool joueur){
 	
+	float tab [LARGEUR];
+	tab_scores(p, joueur, tab);
+	return (max(tab, LARGEUR));
+}
 	

@@ -45,7 +45,7 @@ void effacer_grille(){
 	 printf("\n\e[%dA",NB_LIGNES_A_EFFACER);
  }
 
-bool demander_coup_joueur(partie p, bool joueur){
+bool demander_coup_joueur(){
 	bool coup_valide = -1;
 	int indice = 0;
 	printf("Rentrez l'indice de la colonne où jouer(entre 1 et 7, inclus):\n");//On lutte avec l'utilisateur pour qu'il rentre un indice de colonne correct

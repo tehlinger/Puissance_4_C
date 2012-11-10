@@ -27,19 +27,28 @@ partie nouvelle_partie(){
 void effacer_colonne (colonne c){
 	free (c);
 }
-void liberer_historique(coup historique){
+
+
+void liberer_historique (coup historique){
+	
+	if (historique != NULL){
 	
 	coup tmp = (coup)malloc(sizeof(str_coup));
 	
-		tmp = historique -> suivant; 
-		while (historique != NULL)
-		
+	while (historique != NULL){
+		tmp = historique;
+		historique = (historique -> precedent);
+		free(tmp);
+	}
+}	
+}	
 	
 void liberer_partie (partie p){
 	
 	int i;
 	for (i = 0; i<LARGEUR;i++)
 		effacer_colonne((p->grille)[i]);
+	liberer_historique(p -> historique);
 	free(p);
 }
 
@@ -63,9 +72,8 @@ void retirer_pion(partie p){
 }
 
 void jouer_pion (int indice, bool joueur, partie p){
-	
-	coup dernier_coup; 								//Ajout du coup joue dans l'historique le la partie
-	dernier_coup = (coup) malloc (sizeof(str_coup));
+	//Ajout du coup joue dans l'historique le la partie
+	coup dernier_coup = (coup) malloc (sizeof(str_coup));
 	(dernier_coup -> c) = indice;
 	(dernier_coup -> precedent) = (p -> historique);
 	p->historique = dernier_coup;

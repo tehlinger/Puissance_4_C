@@ -29,10 +29,10 @@ void afficher_partie (partie p);
    
    void effacer_grille();
    
-   /** Fonction demandant à l'utilisateur le coup qu'il veut jouer, renvoie 1 s'il gagne, 0 sinon.
+   /** Fonction demandant à l'utilisateur le coup qu'il veut jouer et le renvoie
     *  Préconditions : la partie existe
     **/
-   bool demander_coup_joueur(partie p, bool joueur);
+   bool demander_coup_joueur();
    
    
     #endif

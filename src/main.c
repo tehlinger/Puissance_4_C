@@ -5,20 +5,13 @@
 #include <verifications.h>
 #include <aleatoire.h>
 #include <time.h>
+#include <jeu.h>
+
 int main ()
 {	
-	bool personne_ne_gagne, joueur = 1;
 	partie p;
-	int coup_joue;
 	p = nouvelle_partie();
-	
-	do {
-		coup_joue = demander_coup_joueur(p, joueur);
-		personne_ne_gagne = !(coup_gagnant(coup_joue, joueur, p)); 
-		jouer_pion(coup_joue, joueur, p);
-		afficher_partie(p);
-	} while(personne_ne_gagne);
-printf("\nBRAVO!\n");
-liberer_partie(p);
+	lancer_partie(p, 1);
+	liberer_partie(p);
 	return 1;
 }

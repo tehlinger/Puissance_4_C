@@ -36,8 +36,8 @@ partie nouvelle_partie();
  
  void liberer_partie(partie p);
  
- /** Libère la mémoire allouée pour la partie p *//
- void liberer_historique(partie p);
+ /** Libère la mémoire allouée pour la partie p */
+ void liberer_historique(coup historique);
 
 /**
  * \function : effacer_colonne
