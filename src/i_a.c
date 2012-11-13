@@ -12,7 +12,7 @@ int nb_egalites(float tab[], int longueur, float maximum){
 int max(float tab[], int longueur){
 	int acc, i;
 	acc = 0;
-	for (i = 1; i < longueur; i++){
+	for (i = 1; i <= longueur; i++){
 		if (tab[i] > tab[acc])
 		acc = i;
 	}
