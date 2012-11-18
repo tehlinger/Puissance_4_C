@@ -11,7 +11,7 @@ int main ()
 {	
 	partie p;
 	p = nouvelle_partie();
-	lancer_partie(p, 1);
+	lancer_partie(p);
 	liberer_partie(p);
 	return 1;
 }

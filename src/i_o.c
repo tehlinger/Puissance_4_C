@@ -48,14 +48,14 @@ void effacer_grille(){
 bool demander_coup_joueur(){
 	bool coup_valide = -1;
 	int indice = 0;
-	printf("Rentrez l'indice de la colonne où jouer(entre 1 et 7, inclus):\n");//On lutte avec l'utilisateur pour qu'il rentre un indice de colonne correct
+	printf("Rentrez l'indice de la colonne où jouer(entre 1 et 7, inclus) u pour annuler:\n");//On lutte avec l'utilisateur pour qu'il rentre un indice de colonne correct
 	do{
-		scanf("%d", &indice);	
-		coup_valide = ((indice>0)&&(indice<8));
+		indice = getchar();	
+		coup_valide = (((indice>'0')&&(indice<'8'))||(indice == 'u'));
 	}while(!(coup_valide));
 	
-	return indice;
-	}
+	return (indice-'0');
+		}
 	
 	
 	

@@ -6,7 +6,7 @@
 	 
 partie nouvelle_partie(){
 	
-	int i;
+	int i,j;
 	
 	partie p;
 	p = (partie) malloc (sizeof (str_partie));
@@ -19,8 +19,11 @@ partie nouvelle_partie(){
 		
 		(p->grille)[i]=(colonne)malloc(sizeof (str_colonne));
 		((p->grille)[i]->h)=0;
-		
 	}
+	for(i=0;i<LARGEUR;i++){
+		for(j=0;j<HAUTEUR;j++)
+			((p->grille[i])->valeurs[j])=-1;
+		}
 	
 	return p;
 }
@@ -59,16 +62,15 @@ void deposer_pion ( bool joueur, colonne c) {
 	
 void retirer_pion(partie p){
 	
-	(((p->grille)[((p->historique)->c)-1]) -> h) --;
+	coup coup_dernier = (p->historique);
+	colonne a_modifier = ((p->grille)[coup_dernier->c-1]); 
+
+	(a_modifier -> valeurs)[(a_modifier->h) - 1] = -1;  
+	(a_modifier -> h)--;                           
 	
-	coup avant_dernier_coup;
-	avant_dernier_coup = (coup) malloc (sizeof(str_coup));
-	avant_dernier_coup = ((p->historique)-> precedent);
-	
-	free(p->historique);
-	
-	(p->historique) = avant_dernier_coup;
-	
+	(p->historique) = (coup_dernier -> precedent);
+	free(coup_dernier);
+		
 }
 
 void jouer_pion (int indice, bool joueur, partie p){

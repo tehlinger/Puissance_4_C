@@ -9,6 +9,9 @@
 /**Boucle principale permettant le déroulement de la partie
  * Renvoie 0 si l'IA ou le joueur 2 gagne, 1 sinon.
  **/
-void lancer_partie(partie p, bool IA);
+void lancer_partie(partie p);
 
+/**Retire les DEUX derniers coups, afin que le joueur puisse rejouer le coup précédent.**/
+
+partie annuler_coups(partie p);
 #endif
