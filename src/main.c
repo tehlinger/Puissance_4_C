@@ -9,6 +9,7 @@
 
 int main ()
 {	
+	srand(time(NULL));
 	partie p;
 	p = nouvelle_partie();
 	lancer_partie(p);

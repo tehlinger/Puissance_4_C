@@ -10,14 +10,18 @@ int nb_egalites(float tab[], int longueur, float maximum){
 }
 
 int max(float tab[], int longueur){
-	int acc, i;
-	acc = 0;
-	for (i = 1; i <= longueur; i++){
+
+	int acc,i;
+		acc = 0;
+	
+	for (i = 1; i < longueur; i++){
 		if (tab[i] > tab[acc])
 		acc = i;
 	}
+	
 	return acc;
 }
+
 
 int nb_alignements( int longueur, bool joueur, int indice, partie p){
 	int acc = 0;

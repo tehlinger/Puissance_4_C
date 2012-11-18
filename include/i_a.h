@@ -2,6 +2,7 @@
 #define __I_A_H
 #include <grille.h>
 #include <verifications.h>
+#include <aleatoire.h>
 
 /**Renvoie l'élement maximum d'un tableau d'entier, dont la longueur est rentrée en paramètre**/
 int max(float tab[], int longueur);
@@ -24,4 +25,7 @@ void tab_scores(partie p, bool joueur, float tab[LARGEUR]);
 /**L'IA, sous la forme du joueur bool joueur, renvoie un entier correspondant à l'indice de la colonne où elle joue**/
 
 int choix_colonne_IA ( partie p, bool joueur);
+
+/** Renvoie le nombre d'occurences de l'argument element dans le tableau passé en argument**/
+int nb_occurences (float element, float tab[], int longueur);
 #endif
